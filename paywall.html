@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptex - Subscription Paywall</title>
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="">
+  <header class="header" data-header>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="./assets/images/logo.svg" width="32" height="32" alt="Cryptex logo">
+        Cryptex
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section paywall" aria-label="paywall" data-section>
+      <div class="container">
+        <h1 class="h1 paywall-title">Subscribe Now</h1>
+        <div class="paywall-plan-details">
+          <h2 id="plan-name"></h2>
+          <p id="plan-price"></p>
+          <p id="plan-description"></p>
+        </div>
+        <form id="paywall-form" class="paywall-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="payment-method">Payment Method</label>
+            <select id="payment-method" name="payment-method" required>
+              <option value="">Select a payment method</option>
+              <option value="gpay">Google Pay</option>
+              <option value="phonepe">PhonePe</option>
+              <option value="upi">UPI</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2024 Stock Sense All Rights Reserved by <a href="#" class="copyright-link">codewithsadee</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Get the plan details from the URL query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const planName = urlParams.get('plan');
+
+    // Set the plan details based on the selected plan
+    const planNameElement = document.getElementById('plan-name');
+    const planPriceElement = document.getElementById('plan-price');
+    const planDescriptionElement = document.getElementById('plan-description');
+
+    switch (planName) {
+      case 'basic':
+        planNameElement.textContent = 'Basic Plan';
+        planPriceElement.textContent = '$9.99/month';
+        planDescriptionElement.textContent = 'Access to basic market insights and analysis.';
+        break;
+      case 'pro':
+        planNameElement.textContent = 'Pro Plan';
+        planPriceElement.textContent = '$19.99/month';
+        planDescriptionElement.textContent = 'Access to advanced market analysis, real-time alerts, and exclusive reports.';
+        break;
+      case 'premium':
+        planNameElement.textContent = 'Premium Plan';
+        planPriceElement.textContent = '$29.99/month';
+        planDescriptionElement.textContent = 'Access to premium features, personalized portfolio analysis, and dedicated support.';
+        break;
+      default:
+        planNameElement.textContent = 'Unknown Plan';
+        planPriceElement.textContent = '';
+        planDescriptionElement.textContent = 'Please select a valid plan.';
+    }
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
